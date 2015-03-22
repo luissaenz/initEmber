@@ -28,9 +28,16 @@ var bootstrapFonts = pickFiles('bower_components/bootstrap-sass-official/assets/
     srcDir: '/',
     destDir: '/fonts/bootstrap'
 });
-var FontelloFonts = pickFiles('app/styles/fontello/font', {
+var fontelloFonts = pickFiles('app/styles/fontello/font', {
     srcDir: '/',
     destDir: '/font'
 });
 
-module.exports = app.toTree([bootstrapFonts, FontelloFonts]);
+// var siteImages = pickFiles('app/images', {
+//     srcDir: '/',
+//     destDir: '/images'
+// });
+
+app.import('app/styles/fontello/css/fontello.css');
+
+module.exports = app.toTree([bootstrapFonts, fontelloFonts, siteImages]);
