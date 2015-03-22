@@ -1,0 +1,121 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+.f300{
+  font-weight: 300;
+}
+.f400{
+	font-weight: 400;
+}
+.f600{
+	font-weight: 600;
+}
+
+@mixin btnColor ($color1, $color2:#fff){
+  -moz-box-shadow:inset 0px -1px 0px 0px darken($color1,5%);
+  -webkit-box-shadow:inset 0px -1px 0px 0px darken($color1,5%);
+  box-shadow:inset 0px -1px 0px 0px darken($color1,5%);
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, lighten(lighten($color1,5%),6%)), color-stop(1, lighten($color1,5%)));
+	background:-moz-linear-gradient(top, lighten(lighten($color1,5%),6%) 5%, lighten($color1,5%) 100%);
+	background:-webkit-linear-gradient(top, lighten(lighten($color1,5%),6%) 5%, lighten($color1,5%) 100%);
+	background:-o-linear-gradient(top, lighten(lighten($color1,5%),6%) 5%, lighten($color1,5%) 100%);
+	background:-ms-linear-gradient(top, lighten(lighten($color1,5%),6%) 5%, lighten($color1,5%) 100%);
+	background:linear-gradient(to bottom, lighten(lighten($color1,5%),6%) 5%, lighten($color1,5%) 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(lighten($color1,5%),6%)', endColorstr='lighten($color1,5%)',GradientType=0);
+	background-color:lighten(lighten($color1,5%),6%);
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	color:$color2;
+	&:hover {
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+		color:$color2;
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, lighten($color1,5%)), color-stop(1, lighten(lighten($color1,5%),6%)));
+		background:-moz-linear-gradient(top, lighten($color1,5%) 5%, lighten(lighten($color1,5%),6%) 100%);
+		background:-webkit-linear-gradient(top, lighten($color1,5%) 5%, lighten(lighten($color1,5%),6%) 100%);
+		background:-o-linear-gradient(top, lighten($color1,5%) 5%, lighten(lighten($color1,5%),6%) 100%);
+		background:-ms-linear-gradient(top, lighten($color1,5%) 5%, lighten(lighten($color1,5%),6%) 100%);
+		background:linear-gradient(to bottom, lighten($color1,5%) 5%, lighten(lighten($color1,5%),6%) 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten($color1,5%)', endColorstr='lighten(lighten($color1,5%),6%)',GradientType=0);
+		background-color:lighten($color1,5%);
+	}
+}
+
+@mixin btn ($color1) {
+	@include btnColor($color1);
+	display: none; 
+	border:0; 
+	display:inline-block;
+	cursor:pointer;
+	padding:7px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px darken($color1,5%);
+	&.btn-xs{
+		padding:4px 10px;
+		font-size: 11px;
+	}
+	&.btn-lg{
+		padding:15px 30px !important;
+		font-size: 22px !important;
+	}
+	&:active {
+		position:relative;
+		top:1px;
+	}
+	.open &.dropdown-toggle{
+		@include btnColor($color1);
+    -moz-border-top-left-radius-:0;
+    -moz-border-bottom-left-radius-:0;
+    -webkit-border-top-left-radius:0;
+    -webkit-border-bottom-left-radius:0;
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+	}
+}
+
+@mixin myButtonColor($color:#0fe4e4, $fs:12px, $pw:15px, $ph:8px) {
+    
+    -moz-box-shadow:inset 0px -1px 0px 0px darken($color,10%);
+    -webkit-box-shadow:inset 0px -1px 0px 0px darken($color,10%);
+    box-shadow:inset 0px -1px 0px 0px darken($color,10%);
+   
+    background-color:$color;
+    
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    
+    display:inline-block;
+    color:darken($color,40%) !important;
+    font-family:arial;
+    font-weight:normal !important;
+    text-decoration:none;
+    font-size:$fs;
+
+    padding:$ph $pw !important;
+    margin: 0 !important;
+    border: none !important; 
+    padding: 0;
+
+    text-shadow:0px 1px 0px lighten($color,10%);
+    text-decoration: none;
+
+    &:hover {
+        background-color:lighten($color,10%);
+    	text-decoration: none;
+    }
+    &:focus {
+        background-color:lighten($color,15%);
+    }
+}
+
+
+
+.btn-default{@include btn(#999)}; //gris claro
+.btn-primary{@include btn(#2B2F33)}; // gris gris oscuro
+.btn-info{@include btn(#1D3B49)}; // azul
+.btn-success{@include btn(#086F64)}; // verde
+.btn-warning{@include btn(#A52615)}; // rojo
