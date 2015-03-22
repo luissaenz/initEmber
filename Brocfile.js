@@ -33,4 +33,4 @@ var FontelloFonts = pickFiles('app/styles/fontello/font', {
     destDir: '/font'
 });
 
-module.exports = app.toTree(FontelloFonts);
+module.exports = app.toTree([bootstrapFonts, FontelloFonts]);
